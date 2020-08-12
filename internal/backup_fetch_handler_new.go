@@ -21,13 +21,13 @@ func GetPgFetcherNew(dbDataDirectory, fileMask, restoreSpecPath string, skipRedu
 		}
 
 		// directory must be empty before starting a deltaFetch
-		isEmpty, err := isDirectoryEmpty(dbDataDirectory)
-		tracelog.ErrorLogger.FatalfOnError("Failed to fetch backup: %v\n", err)
+		// isEmpty, err := isDirectoryEmpty(dbDataDirectory)
+		// tracelog.ErrorLogger.FatalfOnError("Failed to fetch backup: %v\n", err)
 
-		if !isEmpty {
-			tracelog.ErrorLogger.FatalfOnError("Failed to fetch backup: %v\n",
-				newNonEmptyDbDataDirectoryError(dbDataDirectory))
-		}
+		// if !isEmpty {
+		//	tracelog.ErrorLogger.FatalfOnError("Failed to fetch backup: %v\n",
+		//		newNonEmptyDbDataDirectoryError(dbDataDirectory))
+		//}
 		config := NewFetchConfig(backup.Name,
 			utility.ResolveSymlink(dbDataDirectory), folder, spec, filesToUnwrap, skipRedundantTars)
 		err = deltaFetchRecursionNew(config)
