@@ -33,9 +33,7 @@ jobs:
           paths:
             - ${CACHE_FILE_DOCKER_PREFIX}
             - ${CACHE_FILE_UBUNTU}
-            - ${CACHE_FILE_GOLANG}
-    - stage: GitHub Release
-      script: echo "Deploying to GitHub releases ..."
+            - ${CACHE_FILE_GOLANG}    
       before_deploy:
         - tar -zcf wal-g.linux-amd64.tar.gz -C main/pg wal-g
         - sha256sum wal-g.linux-amd64.tar.gz > wal-g.linux-amd64.tar.gz.sha256
