@@ -134,13 +134,13 @@ func (backup *Backup) fetchMeta() (ExtendedMetadataDto, error) {
 
 func checkDbDirectoryForUnwrap(dbDataDirectory string, sentinelDto BackupSentinelDto) error {
 	if !sentinelDto.IsIncremental() {
-		isEmpty, err := isDirectoryEmpty(dbDataDirectory)
-		if err != nil {
-			return err
-		}
-		if !isEmpty {
-			return newNonEmptyDbDataDirectoryError(dbDataDirectory)
-		}
+		// isEmpty, err := isDirectoryEmpty(dbDataDirectory)
+		// if err != nil {
+		// 	return err
+		// }
+		// if !isEmpty {
+		// 	return newNonEmptyDbDataDirectoryError(dbDataDirectory)
+		// }
 	} else {
 		tracelog.DebugLogger.Println("DB data directory before increment:")
 		_ = filepath.Walk(dbDataDirectory,
